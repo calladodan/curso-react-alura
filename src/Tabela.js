@@ -1,50 +1,47 @@
 import React, { Component } from "react";
 
 const TableHead = () => {
-    return(
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Produto</th>
-            <th>Preço</th>
-            <th>Remover</th>
-        </tr>
-    </thead>
+    return (
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Remover</th>
+            </tr>
+        </thead>
     );
 };
 
-const TableBody = () => {
-    return(
+const TableBody = props => {
+    const linhas = props.autores.map((linha, index) => {
+        return (
+            <tr>
+                <td>{linha.nome}</td>
+                <td>{linha.livro}</td>
+                <td>{linha.preco}</td>
+                <td><button>Remover</button></td>
+            </tr>
+        )
+
+    });
+
+    return (
         <tbody>
-                <tr>
-                    <td>Daniel</td>
-                    <td>React</td>
-                    <td>10</td>
-                    <td><button>Remover</button></td>
-                </tr>
-                <tr>
-                    <td>Pablo</td>
-                    <td>Java</td>
-                    <td>20</td>
-                    <td><button>Remover</button></td>
-                </tr>
-                <tr>
-                    <td>Paulo</td>
-                    <td>Horroroso</td>
-                    <td>1000</td>
-                    <td><button>Remover</button></td>
-                </tr>
-            </tbody>
-    );
+            {linhas}
+        </tbody>        
+    )
 };
 
 class Tabela extends Component {
-
     render() {
-        return (<table>
-            <TableHead/>            
-            <TableBody/>
-        </table>
+        const { autores } = this.props;
+
+        return (
+            <table>
+                <TableHead />
+                <TableBody autores={autores} />
+            </table>
         );
     }
 }
