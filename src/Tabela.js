@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 
-class Tabela extends Component {
+const TableHead = () => {
+    return(
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Remover</th>
+        </tr>
+    </thead>
+    );
+};
 
-    render() {
-        return (<table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Produto</th>
-                    <th>Preço</th>
-                    <th>Remover</th>
-                </tr>
-            </thead>
-            <tbody>
+const TableBody = () => {
+    return(
+        <tbody>
                 <tr>
                     <td>Daniel</td>
                     <td>React</td>
@@ -32,6 +35,15 @@ class Tabela extends Component {
                     <td><button>Remover</button></td>
                 </tr>
             </tbody>
+    );
+};
+
+class Tabela extends Component {
+
+    render() {
+        return (<table>
+            <TableHead/>            
+            <TableBody/>
         </table>
         );
     }
