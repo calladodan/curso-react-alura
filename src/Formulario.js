@@ -13,6 +13,20 @@ class Formulario extends Component {
         }
 
         this.state = this.stateInicial;
+    
+    }
+
+    escutadorDeInput = event => {
+        const { name, value } = event.target;
+
+        this.setState({
+            [name] : value
+        });
+ 
+    }
+    submitFormulario = () =>{
+        this.props.escutadorDeSubmit(this.state);
+        this.setState(this.stateInicial);
     }
 
     render() {
@@ -22,16 +36,31 @@ class Formulario extends Component {
         return (
             <form>
 
-                <label htmlfor="nome">Nome</label>
-                <input id="nome" type="text" name="nome" value={nome}></input>
+                <label htmlFor="nome">Nome</label>
+                <input 
+                id="nome" 
+                type="text" 
+                name="nome" 
+                value={nome}
+                onChange={this.escutadorDeInput}></input>
 
-                <label htmlfor="livro">Livro</label>
-                <input id="livro" type="text" name="livro" value={livro}></input>
+                <label htmlFor="livro">Livro</label>
+                <input 
+                id="livro" 
+                type="text" 
+                name="livro" 
+                value={livro}
+                onChange={this.escutadorDeInput}></input>
 
-                <label htmlfor="preco">Preço</label>
-                <input id="preco" type="text" name="preco" value={preco}></input>
+                <label htmlFor="preco">Preço</label>
+                <input 
+                id="preco" 
+                type="text" 
+                name="preco" 
+                value={preco}
+                onChange={this.escutadorDeInput}></input>
 
-                <button type="button">Salvar</button>
+                <button onClick={this.submitFormulario} type="button">Salvar</button>
             </form>
         )
 
